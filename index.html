@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Laburen.com</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -12,175 +12,108 @@
       --header-bg: #2e2e2e;
       --footer-bg: #ccc;
       --text-color: #2e2e2e;
-      --header-text: #ffffff;
+      --header-text: #fff;
     }
-
     .dark-theme {
       --bg-color: #1a1a1a;
       --header-bg: #2e2e2e;
       --footer-bg: #2e2e2e;
-      --text-color: #ffffff;
-      --header-text: #ffffff;
+      --text-color: #fff;
+      --header-text: #fff;
     }
-
     body, html {
-      margin: 0;
-      padding: 0;
+      margin: 0; padding: 0;
       font-family: 'Inter', sans-serif;
-      background-color: var(--bg-color);
+      background: var(--bg-color);
       color: var(--text-color);
-      transition: all 0.3s ease;
+      transition: .3s;
     }
-
-    /* Estilos del encabezado */
     header {
-      background-color: var(--header-bg);
+      background: var(--header-bg);
       color: var(--header-text);
       padding: 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      display: flex; justify-content: space-between; align-items: center;
     }
 
-    /* Contenedor de la marca */
-    .brand {
-      display: flex;
-      align-items: center;
-    }
-
-    .brand img {
-      width: 50px;
-      height: auto;
-      margin-right: 0.5rem;
-      border-radius: 10px; /* Cambiado a 10px para esquinas redondeadas */
-    }
-
-    .brand .company-name {
-      font-size: 1.8rem;
-      color: var(--header-text);
-      font-weight: 600;
-      letter-spacing: -0.02em;
-    }
-
-    /* Main y Footer sin textos */
-    main {
-      padding: 2rem;
-      text-align: center;
-      min-height: calc(100vh - 200px); /* Asegura que el contenido principal ocupe el espacio disponible */
-    }
-
-    footer {
-      background-color: var(--footer-bg);
-      color: var(--text-color);
-      padding: 1rem;
-      text-align: center;
-      bottom: 0;
-      width: 100%;
-      box-sizing: border-box;
-    }
-
-    footer p {
-      margin: 0;
-      font-size: 0.9rem;
-      font-weight: 500;
-      letter-spacing: 0.02em;
-    }
-
-    /* Estilos para el botón de tema */
+    .brand { display: flex; align-items: center }
+    .brand img { width:50px; margin-right:.5rem; border-radius:10px }
+    .company-name { font-size:1.8rem; font-weight:600 }
     .theme-toggle {
-      background: none;
-      border: none;
-      color: #fff;
-      cursor: pointer;
-      font-size: 1.5rem;
-      padding: 0.5rem;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background-color 0.3s ease;
+      background:none; border:none; color:#fff;
+      font-size:1.5rem; cursor:pointer;
+      width:40px; height:40px; border-radius:50%;
     }
-
-    .theme-toggle:hover {
-      background-color: rgba(255, 255, 255, 0.1);
+    .tabs { display:flex; justify-content:center; margin:1rem 0; }
+    .tab-link {
+      background: var(--header-bg); color: var(--header-text);
+      border:none; padding:.5rem 1rem; cursor:pointer; transition:.3s;
     }
-
-    .fa-sun {
-      color: #ffd700;
+    .tab-link.active, .tab-link:hover {
+      background: var(--text-color); color: var(--bg-color);
     }
-
-    .fa-moon {
-      color: #c0c0c0;
+    .tab-content { position: relative; height: calc(100vh - 240px); }
+    iframe {
+      width: 100%; height: 100%; border: none;
+      display: none;
     }
-
-    /* Estilos responsivos */
-    @media (max-width: 600px) {
-      header {
-        justify-content: center;
-      }
+    iframe.active { display: block; }
+    footer {
+      background: var(--footer-bg); color: var(--text-color);
+      text-align: center; padding: 1rem;
     }
   </style>
 </head>
-<body>
+<body class="dark-theme">
 
-<header>
-  <div class="brand">
-    <img src="logo laburen.jpg" alt="Laburen.com Logo">
-    <span class="company-name">Laburen.com</span>
+  <header>
+    <div class="brand">
+      <img src="logo laburen.jpg" alt="Laburen.com Logo">
+      <span class="company-name">Laburen.com</span>
+    </div>
+    <button id="themeToggle" class="theme-toggle">
+      <i class="fas fa-moon"></i>
+    </button>
+  </header>
+
+  <div class="tabs">
+    <button class="tab-link active" data-src="generador.html">Generador de Rutas</button>
+    <button class="tab-link" data-src="analista.html">Analista de Remitos</button>
   </div>
-  <button class="theme-toggle" id="themeToggle">
-    <i class="fas fa-sun"></i>
-  </button>
-</header>
 
-<main>
-  <!-- Contenido eliminado -->
-</main>
+  <div class="tab-content">
+    <iframe id="frame-generador" src="generador.html" class="active"></iframe>
+    <iframe id="frame-analista" src="analista.html"></iframe>
+  </div>
 
-<footer>
-  <p>Expreso suburbano</p>
-</footer>
+  <footer>
+    <p>Expreso suburbano</p>
+  </footer>
 
-<script>
-  window.chatwootSettings = {"position":"right","type":"expanded_bubble","launcherTitle":"Analiza tu archivo"};
-  // Script para el cambio de tema
-  const themeToggle = document.getElementById('themeToggle');
-  const icon = themeToggle.querySelector('i');
-  
-  // Establecer tema oscuro por defecto al cargar la página
-  document.body.classList.add('dark-theme');
-  icon.classList.remove('fa-sun');
-  icon.classList.add('fa-moon');
-  
-  themeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('dark-theme');
-    if (document.body.classList.contains('dark-theme')) {
-      icon.classList.remove('fa-sun');
-      icon.classList.add('fa-moon');
-    } else {
-      icon.classList.remove('fa-moon');
-      icon.classList.add('fa-sun');
-    }
-  });
+  <script>
+    // Toggle tema
+    const themeBtn = document.getElementById('themeToggle');
+    themeBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark-theme');
+      themeBtn.querySelector('i').classList.toggle('fa-moon');
+      themeBtn.querySelector('i').classList.toggle('fa-sun');
+    });
 
-  (function(d,t) {
-    var BASE_URL="https://crm.chatsappai.com";
-    var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-    g.src=BASE_URL+"/packs/js/sdk.js";
-    g.defer = true;
-    g.async = true;
-    s.parentNode.insertBefore(g,s);
-    g.onload=function(){
-      window.chatwootSDK.run({
-        websiteToken: 'jXnHbTWFQLC1ECzktv1LiRYr',
-        baseUrl: BASE_URL
-      })
-    }
-  })(document,"script");
-</script>
-
-
+    // Manejo de pestañas
+    const tabs = document.querySelectorAll('.tab-link');
+    const frames = {
+      'generador.html': document.getElementById('frame-generador'),
+      'analista.html':  document.getElementById('frame-analista')
+    };
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // activar botón
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        // mostrar iframe
+        Object.values(frames).forEach(f => f.classList.remove('active'));
+        frames[tab.dataset.src].classList.add('active');
+      });
+    });
+  </script>
 </body>
 </html>

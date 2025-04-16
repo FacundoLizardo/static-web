@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Generador de Rutas</title>
+
+  <!-- Tipografía Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Estilo local para el <h2>, según referencia del index */
+    h2 {
+      font-family: 'Inter', sans-serif;
+      font-size: 2rem;
+      color: #f2f2f2;              /* igual que --header-bg */
+      text-align: left;
+      margin: 1.5rem 5rem 0.5rem 5rem;
+      letter-spacing: -0.02em;
+      font-weight: 600;
+    }
+
+    /* Estilo local para el <p> */
+    p {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.5rem;
+      color: #f2f2f2;              /* igual que --header-bg */
+      text-align: left;
+      margin: 0.5rem 5rem 0.5rem 5rem;
+      letter-spacing: -0.02em;
+      font-weight: 400;
+    }
+  </style>
+</head>
+<body>
+  <h2>IA Generadora de Hojas de Ruta</h2>
+  <h2></h2>
+  <p>Esta IA recibe archivos individuales, los analiza </p>
+  <p>y devuelve una hoja de ruta en formato excel para subir a Rendel.</p>
+
+  <!-- SDK de Chatwoot con token específico -->
+  <script>
+    (function(d,t) {
+      var BASE_URL="https://crm.chatsappai.com";
+      var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+      g.src=BASE_URL+"/packs/js/sdk.js"; g.defer=true; g.async=true;
+      s.parentNode.insertBefore(g,s);
+      g.onload=function(){
+        window.chatwootSDK.run({
+          websiteToken: 'jXnHbTWFQLC1ECzktv1LiRYr',
+          baseUrl: BASE_URL
+        });
+      }
+    })(document,"script");
+  </script>
+</body>
+</html>
